@@ -1,4 +1,6 @@
-class Plateau {
+package com.bnp.rover.model;
+
+public class Plateau {
     private int maxX;
     private int maxY;
 

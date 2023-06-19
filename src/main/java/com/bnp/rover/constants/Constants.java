@@ -1,4 +1,6 @@
-final class Constants {
+package com.bnp.rover.constants;
+
+public final class Constants {
 
     public static final char LEFT = 'L';
     public static final char RIGHT = 'R';

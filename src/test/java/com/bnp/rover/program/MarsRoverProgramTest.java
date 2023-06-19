@@ -1,3 +1,5 @@
+package com.bnp.rover.program;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +28,7 @@ public class MarsRoverProgramTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        // Exécution du programme MarsRoverProgram en passant en parametre fichier de test
+        // Exécution du programme com.bnp.rover.program.MarsRoverProgram en passant en parametre fichier de test
         MarsRoverProgram.main(new String[]{"src/test/resources/input.txt"});
 
         // Restauration de System.out
@@ -51,7 +53,7 @@ public class MarsRoverProgramTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        // Exécution du programme MarsRoverProgram sans arguments de ligne de commande
+        // Exécution du programme com.bnp.rover.program.MarsRoverProgram sans arguments de ligne de commande
         MarsRoverProgram.main(new String[]{});
 
         // Restauration de System.out

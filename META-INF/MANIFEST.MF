@@ -1,2 +1,2 @@
 Manifest-Version: 1.0
-Main-Class: MarsRoverProgram
+Main-Class: com.bnp.rover.program.MarsRoverProgram

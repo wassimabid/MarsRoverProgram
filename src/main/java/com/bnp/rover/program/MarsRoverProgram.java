@@ -1,3 +1,8 @@
+package com.bnp.rover.program;
+
+import com.bnp.rover.model.Plateau;
+import com.bnp.rover.model.Rover;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

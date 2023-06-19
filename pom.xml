@@ -26,7 +26,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>MarsRoverProgram</mainClass>
+                            <mainClass>com.bnp.rover.program.MarsRoverProgram</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

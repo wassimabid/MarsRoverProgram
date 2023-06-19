@@ -1,6 +1,10 @@
+package com.bnp.rover.model;
+
+import com.bnp.rover.constants.Constants;
+
 import java.util.StringJoiner;
 
-class Rover {
+public class Rover {
     private int x;
     private int y;
     private char direction;
