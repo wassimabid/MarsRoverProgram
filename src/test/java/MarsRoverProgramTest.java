@@ -20,7 +20,7 @@ public class MarsRoverProgramTest {
     }
 
     @Test
-    public void testMarsRoverProgram() throws Exception {
+    public void testMarsRoverProgram() {
 
         // Redirection de System.out pour capturer la sortie du programme (System.out.println)
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

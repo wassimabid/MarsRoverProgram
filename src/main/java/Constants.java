@@ -1,7 +1,4 @@
-class Constants {
-
-    private Constants() {
-    }
+final class Constants {
 
     public static final char LEFT = 'L';
     public static final char RIGHT = 'R';
@@ -11,4 +8,7 @@ class Constants {
     public static final char WEST = 'W';
     public static final char SOUTH = 'S';
     public static final String SPACE = " ";
+
+    private Constants() {
+    }
 }
