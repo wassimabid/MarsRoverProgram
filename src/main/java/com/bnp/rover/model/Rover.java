@@ -17,6 +17,10 @@ public class Rover {
         this.plateau = plateau;
     }
 
+    /**
+     * Méthode qui permet de déplacer le robot selon les instructions passées en paramètre
+     * @param instructions Liste des instructions pour déplacer le robot
+     */
     public void processInstructions(String instructions) {
         for (char instruction : instructions.toCharArray()) {
             if (instruction == Constants.LEFT) {
