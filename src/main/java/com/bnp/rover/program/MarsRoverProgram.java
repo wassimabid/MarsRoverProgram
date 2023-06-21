@@ -1,5 +1,6 @@
 package com.bnp.rover.program;
 
+import com.bnp.rover.model.Direction;
 import com.bnp.rover.model.Plateau;
 import com.bnp.rover.model.Rover;
 
@@ -13,7 +14,7 @@ public class MarsRoverProgram {
 
     public static void main(String[] args) {
         if (args.length < 1) {
-            System.out.println("Please specify the input file name.");
+            System.out.print("Please specify the input file name.");
             return;
         }
         String file = args[0];
@@ -33,7 +34,7 @@ public class MarsRoverProgram {
             while (scanner.hasNextLine()) {
                 int x = scanner.nextInt();
                 int y = scanner.nextInt();
-                char direction = scanner.next().charAt(0);
+                Direction direction = Direction.valueOf(scanner.next());
                 scanner.nextLine();
 
                 Rover rover = new Rover(x, y, direction, plateau);

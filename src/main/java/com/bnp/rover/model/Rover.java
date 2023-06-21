@@ -7,10 +7,10 @@ import java.util.StringJoiner;
 public class Rover {
     private int x;
     private int y;
-    private char direction;
+    private Direction direction;
     private Plateau plateau;
 
-    public Rover(int x, int y, char direction, Plateau plateau) {
+    public Rover(int x, int y, Direction direction, Plateau plateau) {
         this.x = x;
         this.y = y;
         this.direction = direction;
@@ -22,38 +22,38 @@ public class Rover {
      * @param instructions List of instructions to move the robot.
      */
     public void processInstructions(String instructions) {
-        for (char instruction : instructions.toCharArray()) {
-            if (instruction == Constants.LEFT) {
+        for (Instruction instruction : parseInstructions(instructions)) {
+            if (instruction == Instruction.L) {
                 turnLeft();
-            } else if (instruction == Constants.RIGHT) {
+            } else if (instruction == Instruction.R) {
                 turnRight();
-            } else if (instruction == Constants.MOVE) {
+            } else if (instruction == Instruction.M) {
                 moveForward();
             }
         }
     }
 
     private void turnLeft() {
-        if (direction == Constants.NORTH) {
-            direction = Constants.WEST;
-        } else if (direction == Constants.WEST) {
-            direction = Constants.SOUTH;
-        } else if (direction == Constants.SOUTH) {
-            direction = Constants.EAST;
-        } else if (direction == Constants.EAST) {
-            direction = Constants.NORTH;
+        if (direction == Direction.N) {
+            direction = Direction.W;
+        } else if (direction == Direction.W) {
+            direction = Direction.S;
+        } else if (direction == Direction.S) {
+            direction = Direction.E;
+        } else if (direction == Direction.E) {
+            direction = Direction.N;
         }
     }
 
     private void turnRight() {
-        if (direction == Constants.NORTH) {
-            direction = Constants.EAST;
-        } else if (direction == Constants.EAST) {
-            direction = Constants.SOUTH;
-        } else if (direction == Constants.SOUTH) {
-            direction = Constants.WEST;
-        } else if (direction == Constants.WEST) {
-            direction = Constants.NORTH;
+        if (direction == Direction.N) {
+            direction = Direction.E;
+        } else if (direction == Direction.E) {
+            direction = Direction.S;
+        } else if (direction == Direction.S) {
+            direction = Direction.W;
+        } else if (direction == Direction.W) {
+            direction = Direction.N;
         }
     }
 
@@ -61,13 +61,13 @@ public class Rover {
         int newX = x;
         int newY = y;
 
-        if (direction == Constants.NORTH) {
+        if (direction == Direction.N) {
             newY++;
-        } else if (direction == Constants.EAST) {
+        } else if (direction == Direction.E) {
             newX++;
-        } else if (direction == Constants.SOUTH) {
+        } else if (direction == Direction.S) {
             newY--;
-        } else if (direction == Constants.WEST) {
+        } else if (direction == Direction.W) {
             newX--;
         }
 
@@ -77,11 +77,30 @@ public class Rover {
         }
     }
 
+    private Instruction[] parseInstructions(String instructions) {
+        Instruction[] parsedInstructions = new Instruction[instructions.length()];
+        for (int i = 0; i < instructions.length(); i++) {
+            char instructionChar = instructions.charAt(i);
+            switch (instructionChar) {
+                case 'L':
+                    parsedInstructions[i] = Instruction.L;
+                    break;
+                case 'R':
+                    parsedInstructions[i] = Instruction.R;
+                    break;
+                case 'M':
+                    parsedInstructions[i] = Instruction.M;
+                    break;
+            }
+        }
+        return parsedInstructions;
+    }
+
     public String getPosition() {
         StringJoiner output = new StringJoiner(Constants.SPACE);
         output.add(String.valueOf(x))
                 .add(String.valueOf(y))
-                .add(String.valueOf(direction));
+                .add(direction.toString());
         return output.toString();
     }
 }

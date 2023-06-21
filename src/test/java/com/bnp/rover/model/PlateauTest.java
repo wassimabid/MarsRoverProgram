@@ -15,7 +15,7 @@ class PlateauTest {
             "6, 5, false",
             "2, 6, false"
     })
-    public void testIsValidPosition(int x, int y, boolean expected) {
+    void testIsValidPosition(int x, int y, boolean expected) {
         Plateau plateau = new Plateau(5, 5);
         boolean result = plateau.isValidPosition(x, y);
         Assertions.assertEquals(expected, result);

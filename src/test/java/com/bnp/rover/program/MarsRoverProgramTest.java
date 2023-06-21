@@ -7,10 +7,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 
-public class MarsRoverProgramTest {
+class MarsRoverProgramTest {
 
     @Test
-    public void testMarsRoverProgram() {
+    void testMarsRoverProgram() {
 
         // Redirecting System.out to capture the program output (System.out.println)
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -29,7 +29,26 @@ public class MarsRoverProgramTest {
     }
 
     @Test
-    public void testMain_NoInputFile() {
+    void testMain_InputFile_NotFound() {
+
+        // Redirecting System.out to capture the program output (System.out.println)
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        // Executing the MarsRoverProgram by passing the test file as a parameter
+        MarsRoverProgram.main(new String[]{"src/test/resources/gostfile.txt"});
+
+        // Getting the actual output from the program
+        String actualOutput = outputStream.toString().trim();
+
+        // Comparing the actual output with the expected output
+        String expectedOutput = "File not found: src/test/resources/gostfile.txt";
+
+        Assertions.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    void testMain_NoInputFile() {
         // Redirecting System.out to capture the program output (System.out.println)
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
@@ -38,7 +57,7 @@ public class MarsRoverProgramTest {
         MarsRoverProgram.main(new String[]{});
 
         // Getting the actual output from the program
-        String actualOutput = outputStream.toString().trim();
+        String actualOutput = outputStream.toString();
 
         // Comparing the actual output with the expected error message
         String expectedOutput = "Please specify the input file name.";
