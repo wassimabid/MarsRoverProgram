@@ -48,6 +48,25 @@ class MarsRoverProgramTest {
     }
 
     @Test
+    void testMain_Invalid_InputFile() {
+
+        // Redirecting System.out to capture the program output (System.out.println)
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        // Executing the MarsRoverProgram by passing the test file as a parameter
+        MarsRoverProgram.main(new String[]{"src/test/resources/invalidInput.txt"});
+
+        // Getting the actual output from the program
+        String actualOutput = outputStream.toString().trim();
+
+        // Comparing the actual output with the expected output
+        String expectedOutput = "Invalid direction value: X";
+
+        Assertions.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
     void testMain_NoInputFile() {
         // Redirecting System.out to capture the program output (System.out.println)
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

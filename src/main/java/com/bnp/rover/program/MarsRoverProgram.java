@@ -34,15 +34,24 @@ public class MarsRoverProgram {
             while (scanner.hasNextLine()) {
                 int x = scanner.nextInt();
                 int y = scanner.nextInt();
-                Direction direction = Direction.valueOf(scanner.next());
+
+                String directionValue=scanner.next();
+                Direction direction = parseDirection(directionValue);
+                if (direction == null) {
+                    System.out.print("Invalid direction value: " + directionValue);
+                    return;
+                }
+
                 scanner.nextLine();
 
                 Rover rover = new Rover(x, y, direction, plateau);
-                rovers.add(rover);
 
                 // Reading rover instructions
                 String instructions = scanner.nextLine();
+                // Process instructions
                 rover.processInstructions(instructions);
+
+                rovers.add(rover);
             }
 
             // Displaying the final positions of the rovers
@@ -50,6 +59,13 @@ public class MarsRoverProgram {
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + file);
+        }
+    }
+    private static Direction parseDirection(String directionStr) {
+        try {
+            return Direction.valueOf(directionStr);
+        } catch (IllegalArgumentException e) {
+            return null;
         }
     }
 }
