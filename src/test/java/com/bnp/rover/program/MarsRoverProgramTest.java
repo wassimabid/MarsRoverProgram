@@ -1,25 +1,13 @@
 package com.bnp.rover.program;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.PrintStream;
 
 
 public class MarsRoverProgramTest {
-
-    @Mock
-    private File inputFile;
-
-    @BeforeEach
-    public void setup() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     public void testMarsRoverProgram() {
@@ -28,21 +16,14 @@ public class MarsRoverProgramTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        // Exécution du programme com.bnp.rover.program.MarsRoverProgram en passant en parametre fichier de test
+        // Exécution du programme MarsRoverProgram en passant en parametre fichier de test
         MarsRoverProgram.main(new String[]{"src/test/resources/input.txt"});
-
-        // Restauration de System.out
-        System.setOut(System.out);
 
         // Récupération de la sortie réelle du programme
         String actualOutput = outputStream.toString().trim();
 
         // Comparaison de la sortie réelle avec la sortie attendue
-        String expectedOutput = "1 3 N\n5 1 E";
-
-        // Résolution du problème d'encodage
-        expectedOutput = expectedOutput.replace("\r\n", "\n");
-        actualOutput = actualOutput.replace("\r\n", "\n");
+        String expectedOutput = "1 3 N"+System.lineSeparator()+"5 1 E";
 
         Assertions.assertEquals(expectedOutput, actualOutput);
     }
@@ -55,9 +36,6 @@ public class MarsRoverProgramTest {
 
         // Exécution du programme com.bnp.rover.program.MarsRoverProgram sans arguments de ligne de commande
         MarsRoverProgram.main(new String[]{});
-
-        // Restauration de System.out
-        System.setOut(System.out);
 
         // Récupération de la sortie réelle du programme
         String actualOutput = outputStream.toString().trim();
