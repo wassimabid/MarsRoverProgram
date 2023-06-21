@@ -61,14 +61,15 @@ public class RoverUtility {
     private static void moveForward(Rover rover) {
         int newX = rover.getX();
         int newY = rover.getY();
+        Direction direction=rover.getDirection();
 
-        if (rover.getDirection() == Direction.N) {
+        if (direction == Direction.N) {
             newY++;
-        } else if (rover.getDirection() == Direction.E) {
+        } else if (direction == Direction.E) {
             newX++;
-        } else if (rover.getDirection() == Direction.S) {
+        } else if (direction == Direction.S) {
             newY--;
-        } else if (rover.getDirection() == Direction.W) {
+        } else if (direction== Direction.W) {
             newX--;
         }
 
