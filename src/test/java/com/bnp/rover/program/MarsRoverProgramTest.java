@@ -12,17 +12,17 @@ public class MarsRoverProgramTest {
     @Test
     public void testMarsRoverProgram() {
 
-        // Redirection de System.out pour capturer la sortie du programme (System.out.println)
+        // Redirecting System.out to capture the program output (System.out.println)
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        // Exécution du programme MarsRoverProgram en passant en parametre fichier de test
+        // Executing the MarsRoverProgram by passing the test file as a parameter
         MarsRoverProgram.main(new String[]{"src/test/resources/input.txt"});
 
-        // Récupération de la sortie réelle du programme
+        // Getting the actual output from the program
         String actualOutput = outputStream.toString().trim();
 
-        // Comparaison de la sortie réelle avec la sortie attendue
+        // Comparing the actual output with the expected output
         String expectedOutput = "1 3 N"+System.lineSeparator()+"5 1 E";
 
         Assertions.assertEquals(expectedOutput, actualOutput);
@@ -30,18 +30,18 @@ public class MarsRoverProgramTest {
 
     @Test
     public void testMain_NoInputFile() {
-        // Redirection de System.out pour capturer la sortie du programme (System.out.println)
+        // Redirecting System.out to capture the program output (System.out.println)
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        // Exécution du programme com.bnp.rover.program.MarsRoverProgram sans arguments de ligne de commande
+        // Executing the MarsRoverProgram without command-line arguments
         MarsRoverProgram.main(new String[]{});
 
-        // Récupération de la sortie réelle du programme
+        // Getting the actual output from the program
         String actualOutput = outputStream.toString().trim();
 
-        // Comparaison de la sortie réelle avec le message d'erreur attendu
-        String expectedOutput = "Veuillez spécifier le nom du fichier d'entrée.";
+        // Comparing the actual output with the expected error message
+        String expectedOutput = "Please specify the input file name.";
         Assertions.assertEquals(expectedOutput, actualOutput);
     }
 }

@@ -18,8 +18,8 @@ public class Rover {
     }
 
     /**
-     * Méthode qui permet de déplacer le robot selon les instructions passées en paramètre
-     * @param instructions Liste des instructions pour déplacer le robot
+     * Method to move the robot according to the provided instructions.
+     * @param instructions List of instructions to move the robot.
      */
     public void processInstructions(String instructions) {
         for (char instruction : instructions.toCharArray()) {

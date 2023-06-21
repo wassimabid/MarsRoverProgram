@@ -13,7 +13,7 @@ public class MarsRoverProgram {
 
     public static void main(String[] args) {
         if (args.length < 1) {
-            System.out.println("Veuillez spécifier le nom du fichier d'entrée.");
+            System.out.println("Please specify the input file name.");
             return;
         }
         String file = args[0];
@@ -21,7 +21,7 @@ public class MarsRoverProgram {
 
         try (Scanner scanner = new Scanner(inputFile)) {
 
-            // Lecture des coordonnées du plateau
+            // Reading the plateau coordinates
             int maxX = scanner.nextInt();
             int maxY = scanner.nextInt();
             scanner.nextLine();
@@ -29,7 +29,7 @@ public class MarsRoverProgram {
             Plateau plateau = new Plateau(maxX, maxY);
             List<Rover> rovers = new ArrayList<>();
 
-            // Lecture des informations des rovers
+            // Reading rover information
             while (scanner.hasNextLine()) {
                 int x = scanner.nextInt();
                 int y = scanner.nextInt();
@@ -39,19 +39,16 @@ public class MarsRoverProgram {
                 Rover rover = new Rover(x, y, direction, plateau);
                 rovers.add(rover);
 
-                // Lecture des instructions de rover
+                // Reading rover instructions
                 String instructions = scanner.nextLine();
                 rover.processInstructions(instructions);
             }
 
-            // Affichage des positions finales des rovers
+            // Displaying the final positions of the rovers
             rovers.forEach(rover -> System.out.println(rover.getPosition()));
 
         } catch (FileNotFoundException e) {
-            System.out.println("Fichier introuvable : " + file);
+            System.out.println("File not found: " + file);
         }
     }
-
-
-
 }
