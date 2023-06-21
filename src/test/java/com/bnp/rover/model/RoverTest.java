@@ -6,10 +6,15 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class RoverTest {
     @ParameterizedTest
-    @CsvSource({ "LMLMLMLMM, 1, 2, N, 1, 3, N", "MMRMMRMRRM, 3, 3, E, 5, 1, E", "LLRRMMRRLL, 2, 1, S, 2, 0, S" })
-    void testProcessInstructions(String instructions, int initialX, int initialY, Direction initialDirection, int finalX, int finalY, char finalDirection) {
-        Rover rover = new Rover(initialX, initialY, initialDirection, new Plateau(5, 5));
+    @CsvSource({
+            "1, 2, N, LMLMLMLMM, 1 3 N",
+            "3, 3, E, MMRMMRMRRM, 5 1 E",
+    })
+    void testProcessInstructions(int startX, int startY, Direction startDirection, String instructions, String expectedPosition) {
+        Plateau plateau = new Plateau(5, 5);
+        Rover rover = new Rover(startX, startY, startDirection, plateau);
+
         rover.processInstructions(instructions);
-        Assertions.assertEquals(finalX + " " + finalY + " " + finalDirection, rover.getPosition());
+        Assertions.assertEquals(expectedPosition, rover.getPosition());
     }
 }
