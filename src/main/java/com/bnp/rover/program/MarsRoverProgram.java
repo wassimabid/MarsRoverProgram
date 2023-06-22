@@ -36,6 +36,7 @@ public class MarsRoverProgram {
                 int y = scanner.nextInt();
 
                 String directionValue=scanner.next();
+                // check  direction
                 Direction direction = parseDirection(directionValue);
                 if (direction == null) {
                     System.out.print("Invalid direction value: " + directionValue);
@@ -48,6 +49,11 @@ public class MarsRoverProgram {
 
                 // Reading rover instructions
                 String instructions = scanner.nextLine();
+                // check  instrcutions
+                if (!instructions.matches("[LRM]+")){
+                    System.out.print("Invalid instruction value");
+                    return;
+                }
                 // Process instructions
                 rover.processInstructions(instructions);
 
