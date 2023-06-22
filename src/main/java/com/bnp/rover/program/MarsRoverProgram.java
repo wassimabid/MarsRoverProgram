@@ -49,7 +49,7 @@ public class MarsRoverProgram {
 
                 // Reading rover instructions
                 String instructions = scanner.nextLine();
-                // check  instrcutions
+                // check  instructions
                 if (!instructions.matches("[LRM]+")){
                     System.out.print("Invalid instruction value");
                     return;
