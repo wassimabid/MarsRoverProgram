@@ -1,4 +1,8 @@
-package com.bnp.rover.model;
+package com.bnp.rover.utils;
+
+import com.bnp.rover.model.Direction;
+import com.bnp.rover.model.Instruction;
+import com.bnp.rover.model.Rover;
 
 public class RoverUtility {
     public static Instruction[] parseInstructions(String instructions) {

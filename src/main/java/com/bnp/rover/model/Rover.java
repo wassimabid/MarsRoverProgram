@@ -1,6 +1,7 @@
 package com.bnp.rover.model;
 
 import com.bnp.rover.constants.Constants;
+import com.bnp.rover.utils.RoverUtility;
 
 import java.util.StringJoiner;
 
